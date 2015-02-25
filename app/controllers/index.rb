@@ -1,20 +1,8 @@
 require 'sinatra'
 
+
 get '/' do
-  @message= "Rayan is my name"
   erb :index
-end
-
-get '/profile' do
-  erb :profile
-end
-
-  <<-HTML
-<p>
-Welcome to my LightSaber.  Prepare to be amazed.
-<p>
-<a href='/sound'>Hear my swooshy sound!</a>
-  HTML
 end
 
 get '/sound' do
@@ -25,4 +13,21 @@ get '/sound' do
 Your browser does not support the audio element.
 </audio>
   HTML
+end
+
+
+post '/users/new' do
+  hey = User.new({name: params[:name], password: params[:password]})
+  redirect "/users/#{hey.name}"
+end
+
+get '/users/:name' do
+  @name = params[:name]
+  erb :profile
+end
+
+put '/users/:name' do
+end
+
+delete '/users/:name' do
 end
