@@ -75,7 +75,7 @@ DEPENDENCIES
   bcrypt
   jasmine
   pg
-  rack (= 1.5.2)
+  rack (~> 1.5)
   rack-test
   rake
   rspec
