@@ -1,6 +1,7 @@
 ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../Gemfile', __FILE__)
 
 require 'sinatra'
+require 'sinatra/reloader'
 require 'pg'
 require 'active_record'
 
@@ -20,6 +21,10 @@ configure do
   set :root, APP_ROOT.to_path
   set :views, File.join(APP_ROOT, "app", "views")
   enable :session
+end
+
+configure :development do
+  register Sinatra::Reloader
 end
 
 # Set up the controllers and helpers
